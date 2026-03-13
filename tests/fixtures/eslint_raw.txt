@@ -1,0 +1,29 @@
+
+/home/user/projects/myapp/src/components/Button.tsx
+   12:5   warning  React Hook useEffect has a missing dependency: 'onClick'  react-hooks/exhaustive-deps
+   24:18  error    'ButtonVariant' is defined but never used                  no-unused-vars
+   35:3   error    Expected '===' and instead saw '=='                        eqeqeq
+   42:15  error    'props' is defined but never used                          no-unused-vars
+   67:8   warning  Unexpected console statement                               no-console
+
+/home/user/projects/myapp/src/components/Modal.tsx
+   8:1    error    'React' must be in scope when using JSX                    react/react-in-jsx-scope
+   15:10  error    'closeHandler' is defined but never used                   no-unused-vars
+   33:7   error    Expected '===' and instead saw '=='                        eqeqeq
+   56:12  warning  Unexpected console statement                               no-console
+
+/home/user/projects/myapp/src/hooks/useAuth.ts
+   4:5    error    'useState' is defined but never used                       no-unused-vars
+   18:1   error    'useCallback' is defined but never used                    no-unused-vars
+   29:15  warning  React Hook useEffect has a missing dependency: 'user'      react-hooks/exhaustive-deps
+
+/home/user/projects/myapp/src/api/users.ts
+   3:5    error    'axios' is defined but never used                          no-unused-vars
+   22:1   error    Expected '===' and instead saw '=='                        eqeqeq
+   45:8   warning  Unexpected console statement                               no-console
+
+/home/user/projects/myapp/src/utils/format.ts
+   12:5   error    'formatDate' is defined but never used                     no-unused-vars
+
+✖ 16 problems (11 errors, 5 warnings)
+  11 errors and 5 warnings potentially fixable with the `--fix` option.

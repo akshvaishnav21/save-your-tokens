@@ -1,0 +1,96 @@
+{"Action":"start","Package":"github.com/example/myapp"}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestUserCreate"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestUserCreate","Output":"=== RUN   TestUserCreate\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestUserCreate","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestUserRead"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestUserRead","Output":"=== RUN   TestUserRead\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestUserRead","Elapsed":0.002}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestUserUpdate"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestUserUpdate","Output":"=== RUN   TestUserUpdate\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestUserUpdate","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestUserDelete"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestUserDelete","Output":"=== RUN   TestUserDelete\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestUserDelete","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestUserList"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestUserList","Output":"=== RUN   TestUserList\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestUserList","Elapsed":0.003}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestUserListPagination"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestUserListPagination","Output":"=== RUN   TestUserListPagination\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestUserListPagination","Elapsed":0.002}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestAuthLogin"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestAuthLogin","Output":"=== RUN   TestAuthLogin\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestAuthLogin","Elapsed":0.005}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestAuthLogout"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestAuthLogout","Output":"=== RUN   TestAuthLogout\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestAuthLogout","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestAuthTokenRefresh"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestAuthTokenRefresh","Output":"=== RUN   TestAuthTokenRefresh\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestAuthTokenRefresh","Elapsed":0.002}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestAuthTokenExpiry"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestAuthTokenExpiry","Output":"=== RUN   TestAuthTokenExpiry\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestAuthTokenExpiry","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestConfigLoad"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestConfigLoad","Output":"=== RUN   TestConfigLoad\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestConfigLoad","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestConfigDefaults"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestConfigDefaults","Output":"=== RUN   TestConfigDefaults\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestConfigDefaults","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestHandlerHealth"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestHandlerHealth","Output":"=== RUN   TestHandlerHealth\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestHandlerHealth","Elapsed":0.002}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestHandlerGetUser"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestHandlerGetUser","Output":"=== RUN   TestHandlerGetUser\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestHandlerGetUser","Elapsed":0.003}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestHandlerCreateUser"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestHandlerCreateUser","Output":"=== RUN   TestHandlerCreateUser\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestHandlerCreateUser","Elapsed":0.004}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestHandlerUpdateUser"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestHandlerUpdateUser","Output":"=== RUN   TestHandlerUpdateUser\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestHandlerUpdateUser","Elapsed":0.003}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestHandlerDeleteUser"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestHandlerDeleteUser","Output":"=== RUN   TestHandlerDeleteUser\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestHandlerDeleteUser","Elapsed":0.002}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestDatabaseConnect"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestDatabaseConnect","Output":"=== RUN   TestDatabaseConnect\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestDatabaseConnect","Elapsed":0.012}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestDatabaseQuery"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestDatabaseQuery","Output":"=== RUN   TestDatabaseQuery\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestDatabaseQuery","Elapsed":0.008}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestDatabaseInsert"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestDatabaseInsert","Output":"=== RUN   TestDatabaseInsert\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestDatabaseInsert","Elapsed":0.007}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestDatabaseTransaction"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestDatabaseTransaction","Output":"=== RUN   TestDatabaseTransaction\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestDatabaseTransaction","Elapsed":0.015}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestValidateEmail"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestValidateEmail","Output":"=== RUN   TestValidateEmail\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestValidateEmail","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestValidatePassword"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestValidatePassword","Output":"=== RUN   TestValidatePassword\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestValidatePassword","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestSlugify"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestSlugify","Output":"=== RUN   TestSlugify\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestSlugify","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestFormatDate"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestFormatDate","Output":"=== RUN   TestFormatDate\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestFormatDate","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestParseDate"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestParseDate","Output":"=== RUN   TestParseDate\n"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestParseDate","Output":"    main_test.go:234: got error: parsing time \"2024-13-45\": month out of range\n"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestParseDate","Output":"    main_test.go:234: expected: 2024-12-31, got: 0001-01-01\n"}
+{"Action":"fail","Package":"github.com/example/myapp","Test":"TestParseDate","Elapsed":0.5}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestCacheGet"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestCacheGet","Output":"=== RUN   TestCacheGet\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestCacheGet","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestCacheSet"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestCacheSet","Output":"=== RUN   TestCacheSet\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestCacheSet","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestCacheDelete"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestCacheDelete","Output":"=== RUN   TestCacheDelete\n"}
+{"Action":"pass","Package":"github.com/example/myapp","Test":"TestCacheDelete","Elapsed":0.001}
+{"Action":"run","Package":"github.com/example/myapp","Test":"TestCacheExpiry"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestCacheExpiry","Output":"=== RUN   TestCacheExpiry\n"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestCacheExpiry","Output":"    cache_test.go:89: TTL expiry failed: key still present after 100ms\n"}
+{"Action":"output","Package":"github.com/example/myapp","Test":"TestCacheExpiry","Output":"    cache_test.go:90: expected: false, got: true\n"}
+{"Action":"fail","Package":"github.com/example/myapp","Test":"TestCacheExpiry","Elapsed":0.12}
+{"Action":"fail","Package":"github.com/example/myapp","Elapsed":0.65}

@@ -1,0 +1,46 @@
+ DEV  v1.2.0 /home/user/projects/myapp
+
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mcomponents/Button.test.ts[0m [2m(5)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mcomponents/Input.test.ts[0m [2m(3)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mcomponents/Modal.test.ts[0m [2m(4)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mhooks/useAuth.test.ts[0m [2m(6)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mhooks/useForm.test.ts[0m [2m(5)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mhooks/useDebounce.test.ts[0m [2m(2)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mutils/format.test.ts[0m [2m(4)[0m
+[1B[2K[1G[32m ✓[39m [2msrc/[0m[1mutils/validation.test.ts[0m [2m(6)[0m
+[1B[2K[1G[31m ×[39m [2msrc/[0m[1mapi/users.test.ts[0m [2m(2 tests | 1 failed)[0m
+
+[1B[31m FAIL[39m [2msrc/api/[0m[1musers.test.ts[0m [2m> UserAPI > fetchUser > returns user data[0m
+[31mAssertionError[39m: expected [32m{ id: 1, name: 'Alice' }[39m to deeply equal [32m{ id: 1, name: 'Alice Smith' }[39m
+
+ [2m- Expected[0m
+ [32m+ Received[0m
+
+   [2mObject {[0m
+     [2m"id":[0m [2m1,[0m
+ [32m+   "name": "Alice",[0m
+ [2m-   "name": "Alice Smith",[0m
+   [2m}[0m
+
+[2m  ❯ src/api/users.test.ts[0m[2m:34:25[0m
+
+[0m
+
+[1B[2K[1G[31m ×[39m [2msrc/[0m[1mstore/cartSlice.test.ts[0m [2m(3 tests | 1 failed)[0m
+
+[1B[31m FAIL[39m [2msrc/store/[0m[1mcartSlice.test.ts[0m [2m> CartSlice > removeItem > removes item by id[0m
+[31mAssertionError[39m: expected [32m2[39m to equal [32m1[39m
+
+Expected number of cart items after removal: 1
+But got: 2
+
+The removeItem action failed to remove the item with id 42.
+
+[2m  ❯ src/store/cartSlice.test.ts[0m[2m:78:14[0m
+
+[0m
+
+[32m Test Files[39m  [31m2 failed[39m | [32m8 passed[39m (10)
+[32m      Tests[39m  [31m2 failed[39m | [32m33 passed[39m (35)
+[2m   Start at[39m  14:23:01
+[2m   Duration[39m  2.14s (transform 312ms, setup 45ms, collect 890ms, tests 897ms)

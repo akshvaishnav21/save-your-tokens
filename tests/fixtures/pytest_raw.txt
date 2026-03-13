@@ -1,0 +1,69 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.7, pytest-7.4.4, pluggy-1.3.0
+rootdir: /home/user/projects/myapp
+configfile: pyproject.toml
+plugins: anyio-4.2.0, cov-4.1.0, mock-3.12.0
+collecting ... collected 25 items
+
+tests/test_auth.py::test_login_success PASSED                            [  4%]
+tests/test_auth.py::test_login_invalid_credentials PASSED                [  8%]
+tests/test_auth.py::test_login_empty_password PASSED                     [ 12%]
+tests/test_auth.py::test_logout_clears_session PASSED                    [ 16%]
+tests/test_auth.py::test_token_refresh PASSED                            [ 20%]
+tests/test_users.py::test_create_user_success PASSED                     [ 24%]
+tests/test_users.py::test_create_user_duplicate_email PASSED             [ 28%]
+tests/test_users.py::test_get_user_by_id PASSED                          [ 32%]
+tests/test_users.py::test_get_user_not_found PASSED                      [ 36%]
+tests/test_users.py::test_update_user_profile PASSED                     [ 40%]
+tests/test_users.py::test_delete_user PASSED                             [ 44%]
+tests/test_users.py::test_list_users PASSED                              [ 48%]
+tests/test_users.py::test_list_users_pagination PASSED                   [ 52%]
+tests/test_database.py::test_connection_success PASSED                   [ 56%]
+tests/test_database.py::test_query_returns_results PASSED                [ 60%]
+tests/test_database.py::test_insert_record PASSED                        [ 64%]
+tests/test_database.py::test_update_record PASSED                        [ 68%]
+tests/test_database.py::test_delete_record PASSED                        [ 72%]
+tests/test_database.py::test_transaction_commit PASSED                   [ 76%]
+tests/test_database.py::test_transaction_rollback PASSED                 [ 80%]
+tests/test_utils.py::test_slugify PASSED                                 [ 84%]
+tests/test_utils.py::test_format_currency PASSED                         [ 88%]
+tests/test_utils.py::test_validate_email_valid PASSED                    [ 92%]
+tests/test_utils.py::test_validate_email_invalid FAILED                  [ 96%]
+tests/test_utils.py::test_parse_date_invalid FAILED                      [100%]
+
+=================================== FAILURES ===================================
+____________________ test_validate_email_invalid ____________________
+
+    def test_validate_email_invalid():
+        """Test that invalid emails are rejected."""
+        invalid_emails = [
+            "notanemail",
+            "@nodomain.com",
+            "missing@",
+            "spaces in@email.com",
+        ]
+        for email in invalid_emails:
+            result = validate_email(email)
+>           assert result is False, f"Expected False for '{email}', got {result}"
+E           AssertionError: Expected False for 'spaces in@email.com', got True
+E           The email validator incorrectly accepted an email with spaces.
+
+tests/test_utils.py:87: AssertionError
+
+_________________________ test_parse_date_invalid _____________________________
+
+    def test_parse_date_invalid():
+        """Test that invalid date strings raise ValueError."""
+        bad_dates = ["2024-13-01", "2024-00-15", "not-a-date"]
+        for d in bad_dates:
+>           with pytest.raises(ValueError):
+>               parse_date(d)
+E           Failed: DID NOT RAISE <class 'ValueError'>
+E           parse_date("2024-13-01") returned datetime(2024, 1, 1) instead of raising
+
+tests/test_utils.py:101: Failed
+
+=========================== short test summary info ============================
+FAILED tests/test_utils.py::test_validate_email_invalid - AssertionError: Expected False for 'spaces in@email.com', got True
+FAILED tests/test_utils.py::test_parse_date_invalid - Failed: DID NOT RAISE <class 'ValueError'>
+2 failed, 23 passed in 1.45s

@@ -1,0 +1,54 @@
+   Compiling proc-macro2 v1.0.76
+   Compiling unicode-ident v1.0.12
+   Compiling libc v0.2.152
+   Compiling cfg-if v1.0.0
+   Compiling autocfg v1.1.0
+   Compiling memchr v2.7.1
+   Compiling serde v1.0.195
+   Compiling once_cell v1.19.0
+   Compiling itoa v1.0.10
+   Compiling ryu v1.0.16
+   Compiling quote v1.0.35
+   Compiling syn v2.0.48
+   Compiling serde_derive v1.0.195
+   Compiling serde_json v1.0.111
+   Compiling pin-project-lite v0.2.13
+   Compiling tokio v1.35.1
+   Compiling bytes v1.5.0
+   Compiling futures-core v0.3.30
+   Compiling log v0.4.20
+   Compiling http v0.2.11
+   Compiling httparse v1.8.0
+   Compiling httpdate v1.0.3
+   Compiling num_cpus v1.16.0
+   Compiling socket2 v0.5.5
+   Compiling mio v0.8.10
+   Compiling tracing-core v0.1.32
+   Compiling tracing v0.1.40
+   Compiling tower-service v0.3.2
+   Compiling hyper v0.14.28
+   Compiling h2 v0.3.24
+   Compiling tower v0.4.13
+   Compiling axum-core v0.4.3
+   Compiling axum v0.7.4
+   Compiling sqlx-core v0.7.3
+   Compiling sqlx-postgres v0.7.3
+   Compiling sqlx v0.7.3
+warning: unused variable: `conn`
+  --> src/database.rs:45:9
+   |
+45 |         let conn = pool.acquire().await?;
+   |             ^^^^ help: if this is intentional, prefix it with an underscore: `_conn`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `result`
+  --> src/handlers.rs:112:13
+   |
+112|             let result = query.fetch_optional(&pool).await?;
+   |                 ^^^^^^ help: if this is intentional, prefix it with an underscore: `_result`
+
+warning: 2 warnings emitted
+
+   Compiling myapp v0.1.0 (/home/user/projects/myapp)
+    Finished dev [unoptimized + debuginfo] target(s) in 45.23s

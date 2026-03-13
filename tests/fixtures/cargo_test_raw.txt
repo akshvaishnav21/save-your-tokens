@@ -1,0 +1,65 @@
+   Compiling myapp v0.1.0 (/home/user/projects/myapp)
+    Finished test [unoptimized + debuginfo] target(s) in 3.45s
+     Running unittests src/lib.rs (target/debug/deps/myapp-8f3a2b1c4d5e6f70)
+
+running 40 tests
+test auth::tests::test_login_success ... ok
+test auth::tests::test_login_invalid_password ... ok
+test auth::tests::test_login_invalid_username ... ok
+test auth::tests::test_logout_clears_session ... ok
+test auth::tests::test_token_expiry ... ok
+test auth::tests::test_refresh_token_valid ... ok
+test auth::tests::test_refresh_token_expired ... ok
+test config::tests::test_load_default_config ... ok
+test config::tests::test_load_from_env ... ok
+test config::tests::test_config_merge ... ok
+test config::tests::test_invalid_config_path ... ok
+test database::tests::test_connect_success ... ok
+test database::tests::test_query_single_row ... ok
+test database::tests::test_query_multiple_rows ... ok
+test database::tests::test_insert_record ... ok
+test database::tests::test_update_record ... ok
+test database::tests::test_delete_record ... ok
+test database::tests::test_transaction_commit ... ok
+test database::tests::test_transaction_rollback ... ok
+test database::tests::test_connection_pool ... ok
+test handlers::tests::test_health_check ... ok
+test handlers::tests::test_get_user_by_id ... ok
+test handlers::tests::test_create_user ... ok
+test handlers::tests::test_update_user_profile ... ok
+test handlers::tests::test_delete_user ... ok
+test handlers::tests::test_list_users_pagination ... ok
+test models::tests::test_user_validation_valid ... ok
+test models::tests::test_user_validation_empty_name ... FAILED
+test models::tests::test_user_validation_invalid_email ... ok
+test models::tests::test_user_serialization ... ok
+test models::tests::test_user_deserialization ... ok
+test models::tests::test_password_hashing ... ok
+test models::tests::test_password_verify_correct ... ok
+test models::tests::test_password_verify_incorrect ... ok
+test utils::tests::test_slugify ... ok
+test utils::tests::test_truncate_string ... ok
+test utils::tests::test_parse_date ... FAILED
+test utils::tests::test_format_date ... ok
+test utils::tests::test_calculate_age ... ok
+test utils::tests::test_sanitize_html ... ok
+
+failures:
+
+---- models::tests::test_user_validation_empty_name stdout ----
+thread 'models::tests::test_user_validation_empty_name' panicked at 'assertion failed: `(left == right)`
+  left: `Err(ValidationError { field: "name", message: "must not be empty" })`,
+ right: `Ok(User { id: 0, name: "", email: "test@example.com", created_at: ... })`', src/models.rs:142:9
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- utils::tests::test_parse_date stdout ----
+thread 'utils::tests::test_parse_date' panicked at 'called `Result::unwrap()` on an `Err` value: ParseError { kind: InvalidFormat }
+  --> attempted to parse "2024-13-45" as a valid date
+  --> expected format: YYYY-MM-DD', src/utils.rs:87:22
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+failures:
+    models::tests::test_user_validation_empty_name
+    utils::tests::test_parse_date
+
+test result: FAILED. 38 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s

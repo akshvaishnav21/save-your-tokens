@@ -1,0 +1,9 @@
+CONTAINER ID   IMAGE                         COMMAND                  CREATED         STATUS                    PORTS                                       NAMES
+a1b2c3d4e5f6   postgres:15-alpine            "docker-entrypoint.s…"   2 hours ago     Up 2 hours                0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   myapp_postgres_1
+b2c3d4e5f6a7   redis:7-alpine                "docker-entrypoint.s…"   2 hours ago     Up 2 hours                0.0.0.0:6379->6379/tcp, :::6379->6379/tcp   myapp_redis_1
+c3d4e5f6a7b8   myapp_backend:latest          "/app/entrypoint.sh"     45 minutes ago  Up 45 minutes             0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   myapp_backend_1
+d4e5f6a7b8c9   nginx:1.25-alpine             "/docker-entrypoint.…"   45 minutes ago  Up 45 minutes             0.0.0.0:80->80/tcp, :::80->80/tcp           myapp_nginx_1
+e5f6a7b8c9d0   rabbitmq:3.12-management      "docker-entrypoint.s…"   3 hours ago     Up 3 hours                0.0.0.0:5672->5672/tcp, 15672/tcp           myapp_rabbitmq_1
+f6a7b8c9d0e1   elasticsearch:8.12.0          "/bin/tini -- /usr/l…"   3 hours ago     Up 3 hours                0.0.0.0:9200->9200/tcp, 9300/tcp            myapp_elastic_1
+a7b8c9d0e1f2   kibana:8.12.0                 "/bin/tini -- /usr/l…"   3 hours ago     Up 3 hours                0.0.0.0:5601->5601/tcp                      myapp_kibana_1
+b8c9d0e1f2a3   grafana/grafana:10.2.3        "/run.sh"                 1 hour ago      Up 1 hour                 0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   myapp_grafana_1

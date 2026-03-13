@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /d/Projects/save_your_tokens -type f \\\\\\(-name *.go -o -name Makefile -o -name go.mod -o -name .cursorrules \\\\\\))",
+      "Bash(go mod:*)",
+      "Read(//c/Program Files/Go/**)",
+      "Read(//c/Go/**)",
+      "Bash(find /c -name go.exe -maxdepth 5)",
+      "Bash(cmd.exe /c \"where go\")",
+      "Bash(cmd.exe /c \"go version\")",
+      "Bash(powershell.exe -Command \"Get-Command go -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source; go version\")",
+      "Read(//c/Users/aakas/**)",
+      "Bash(winget install:*)",
+      "Bash(export PATH=\"/c/Program Files/Go/bin:$PATH\")",
+      "Bash(go version:*)",
+      "Bash(go build:*)"
+    ]
+  }
+}

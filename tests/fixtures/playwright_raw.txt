@@ -1,0 +1,56 @@
+Running 30 tests using 4 workers
+
+  ✓  1 [chromium] › auth/login.spec.ts:12:7 › Login page › displays login form (234ms)
+  ✓  2 [chromium] › auth/login.spec.ts:25:7 › Login page › accepts valid credentials (456ms)
+  ✓  3 [chromium] › auth/login.spec.ts:45:7 › Login page › shows error for invalid password (312ms)
+  ✓  4 [chromium] › auth/login.spec.ts:62:7 › Login page › shows error for empty fields (198ms)
+  ✓  5 [chromium] › auth/logout.spec.ts:10:7 › Logout › clears session on logout (345ms)
+  ✓  6 [chromium] › dashboard/overview.spec.ts:8:7 › Dashboard › renders overview page (567ms)
+  ✓  7 [chromium] › dashboard/overview.spec.ts:20:7 › Dashboard › shows user stats (423ms)
+  ✓  8 [chromium] › dashboard/overview.spec.ts:38:7 › Dashboard › navigation works (289ms)
+  ✓  9 [chromium] › users/list.spec.ts:12:7 › Users List › displays all users (678ms)
+  ✓  10 [chromium] › users/list.spec.ts:28:7 › Users List › pagination works (534ms)
+  ✓  11 [chromium] › users/list.spec.ts:46:7 › Users List › search filters results (612ms)
+  ✓  12 [chromium] › users/create.spec.ts:10:7 › Create User › form renders correctly (245ms)
+  ✓  13 [chromium] › users/create.spec.ts:24:7 › Create User › validates required fields (389ms)
+  ✓  14 [chromium] › users/create.spec.ts:42:7 › Create User › submits valid form (712ms)
+  ✓  15 [chromium] › users/edit.spec.ts:10:7 › Edit User › loads user data (534ms)
+  ✓  16 [chromium] › users/edit.spec.ts:28:7 › Edit User › saves updated data (623ms)
+  ✓  17 [chromium] › products/list.spec.ts:12:7 › Products List › displays catalog (734ms)
+  ✓  18 [chromium] › products/list.spec.ts:29:7 › Products List › filters by category (456ms)
+  ✓  19 [chromium] › products/detail.spec.ts:8:7 › Product Detail › shows product info (389ms)
+  ✓  20 [chromium] › products/detail.spec.ts:22:7 › Product Detail › add to cart works (512ms)
+  ✓  21 [chromium] › cart/overview.spec.ts:10:7 › Cart › shows cart items (345ms)
+  ✓  22 [chromium] › cart/overview.spec.ts:28:7 › Cart › updates quantities (467ms)
+  ✓  23 [chromium] › cart/overview.spec.ts:48:7 › Cart › removes items correctly (378ms)
+  ✓  24 [chromium] › checkout/flow.spec.ts:14:7 › Checkout › shipping form validates (623ms)
+  ✓  25 [chromium] › checkout/flow.spec.ts:36:7 › Checkout › payment step renders (578ms)
+  ✓  26 [chromium] › checkout/flow.spec.ts:58:7 › Checkout › order confirmation shows (789ms)
+  ✓  27 [chromium] › settings/profile.spec.ts:10:7 › Settings › profile form loads (345ms)
+  ✓  28 [chromium] › settings/profile.spec.ts:27:7 › Settings › password change works (512ms)
+
+  1) [chromium] › cart/checkout.spec.ts:72:7 › Checkout › payment processing › completes payment with valid card
+
+    Error: page.waitForSelector: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#payment-success') to be visible
+
+      at cart/checkout.spec.ts:89
+      at checkoutPaymentTest (cart/checkout.spec.ts:72)
+
+    Expected: Payment success screen to be visible
+    Received: Timeout waiting for #payment-success element
+
+  2) [chromium] › api/orders.spec.ts:45:7 › Orders API › creates order with valid data
+
+    Error: expect(received).toBe(expected)
+
+    Expected: 201
+    Received: 400
+
+    Response body: {"error":"Invalid payment method","code":"PAYMENT_ERROR"}
+
+      at api/orders.spec.ts:61
+      at createOrderTest (api/orders.spec.ts:45)
+
+  2 failed, 28 passed (30.2s)

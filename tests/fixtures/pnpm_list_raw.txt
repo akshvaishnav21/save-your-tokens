@@ -1,0 +1,62 @@
+my-project@1.0.0 /home/user/project
+
+dependencies:
+├─┬ @tanstack/react-query@5.17.15
+│ ├── @tanstack/query-core@5.17.15
+│ └── use-sync-external-store@1.2.0
+├─┬ axios@1.6.5
+│ ├── follow-redirects@1.15.4
+│ ├── form-data@4.0.0
+│ └── proxy-from-env@1.1.0
+├─┬ react@18.2.0
+│ ├── loose-envify@1.4.0
+│ └── scheduler@0.23.0
+├─┬ react-dom@18.2.0
+│ ├── loose-envify@1.4.0
+│ ├── react@18.2.0
+│ └── scheduler@0.23.0
+├─┬ react-router-dom@6.21.3
+│ ├── @remix-run/router@1.14.2
+│ └── react-router@6.21.3
+├─┬ zustand@4.4.7
+│ ├── immer@10.0.3
+│ └── use-sync-external-store@1.2.0
+├─┬ zod@3.22.4
+│ └── (no deps)
+├─┬ date-fns@3.2.0
+│ └── (no deps)
+├─┬ clsx@2.1.0
+│ └── (no deps)
+└─┬ tailwind-merge@2.2.0
+  └── (no deps)
+
+devDependencies:
+├─┬ @testing-library/react@14.1.2
+│ ├── @babel/runtime@7.23.8
+│ ├── @testing-library/dom@9.3.4
+│ └── react-dom@18.2.0
+├─┬ @testing-library/user-event@14.5.2
+│ └── @testing-library/dom@9.3.4
+├─┬ @types/react@18.2.55
+│ └── @types/prop-types@15.7.11
+├─┬ @types/react-dom@18.2.19
+│ └── @types/react@18.2.55
+├─┬ @vitejs/plugin-react@4.2.1
+│ ├── @babel/core@7.23.8
+│ ├── @babel/plugin-transform-react-jsx@7.23.4
+│ └── vite@5.0.12
+├─┬ eslint@8.56.0
+│ ├── @eslint-community/eslint-utils@4.4.0
+│ ├── @eslint-community/regexpp@4.10.0
+│ ├── @eslint/eslintrc@2.1.4
+│ ├── @eslint/js@8.56.0
+│ ├── @humanwhocodes/config-array@0.11.13
+│ ├── @humanwhocodes/module-importer@1.0.1
+│ ├── @humanwhocodes/object-schema@2.0.1
+│ └── ajv@6.12.6
+├─┬ typescript@5.3.3
+│ └── (no deps)
+└─┬ vite@5.0.12
+  ├── esbuild@0.19.11
+  ├── postcss@8.4.33
+  └── rollup@4.9.6
