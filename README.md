@@ -16,38 +16,54 @@ Claude Code bash call: "cargo test 2>&1"
           → logs savings to SQLite in background
 ```
 
-## Dependencies
-
-**Runtime:**
-- `jq` — required by the hook script (`brew install jq` / `apt install jq`)
-- `syt` binary on `$PATH`
-
-**Build:**
-- Go 1.22+
-- No CGO — pure Go build (`modernc.org/sqlite` for SQLite)
-
 ## Installation
 
-### Option 1: Build from source
+### Step 1: Install prerequisites
+
+**Go 1.22+** (required to build `syt`):
+
+- **macOS:** `brew install go`
+- **Linux (Ubuntu/Debian):** `sudo apt install golang-go` or download from [go.dev/dl](https://go.dev/dl/)
+- **Windows:** Download the installer from [go.dev/dl](https://go.dev/dl/) and run it
+
+Verify: `go version` should print `go1.22` or higher.
+
+**jq** (required by the hook script):
+
+- **macOS:** `brew install jq`
+- **Linux (Ubuntu/Debian):** `sudo apt install jq`
+- **Windows:** `winget install jqlang.jq` or `choco install jq`
+
+Verify: `jq --version`
+
+**Git** (to clone the repo):
+
+- **macOS:** `brew install git` or install Xcode Command Line Tools: `xcode-select --install`
+- **Linux:** `sudo apt install git`
+- **Windows:** Download from [git-scm.com](https://git-scm.com/) or `winget install Git.Git`
+
+**make** (to build):
+
+- **macOS:** included with Xcode Command Line Tools (`xcode-select --install`)
+- **Linux:** `sudo apt install make`
+- **Windows:** `winget install GnuWin32.Make` or use [Git Bash](https://git-scm.com/) which includes make
+
+### Step 2: Build from source
 
 ```bash
-git clone https://github.com/yourname/save-your-tokens
+git clone https://github.com/akshvaishnav21/save-your-tokens
 cd save-your-tokens
 make build          # produces dist/syt (or dist/syt.exe on Windows)
-make install        # copies to $GOPATH/bin
+make install        # copies binary to $GOPATH/bin
 ```
 
-### Option 2: `go install`
+Make sure `$GOPATH/bin` is on your `$PATH`. Add this to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.) if needed:
 
 ```bash
-go install github.com/saveyourtokens/syt@latest
+export PATH="$PATH:$(go env GOPATH)/bin"
 ```
 
-### Option 3: Download binary
-
-Grab the binary for your platform from the [releases page](https://github.com/yourname/save-your-tokens/releases), put it on your `$PATH`.
-
-### Install the Claude Code hook
+### Step 3: Install the Claude Code hook
 
 ```bash
 syt init
@@ -58,10 +74,8 @@ This writes `~/.claude/hooks/syt-rewrite.sh` and patches `~/.claude/settings.jso
 ### Uninstall
 
 ```bash
-syt uninstall
+syt uninstall       # removes hook from ~/.claude/settings.json
 ```
-
-Removes the hook entry from `~/.claude/settings.json`.
 
 ## Usage
 
