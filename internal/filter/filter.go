@@ -92,7 +92,7 @@ func (r *Runner) RunWithFilter(
 		}
 	}
 
-	// Non-blocking tracker write
+	// Tracker write (synchronous — caller closes DB after this returns)
 	if r.Tracker != nil {
 		inputTokens := utils.CountTokens(rawCombined)
 		outputTokens := utils.CountTokens(filtered)
@@ -103,9 +103,7 @@ func (r *Runner) RunWithFilter(
 			OutputTokens: outputTokens,
 			ExecutionMs:  elapsed.Milliseconds(),
 		}
-		go func() {
-			_ = r.Tracker.Track(rec)
-		}()
+		_ = r.Tracker.Track(rec)
 	}
 
 	return exitCode, nil

@@ -46,38 +46,36 @@ func runInit(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("getting home dir: %w", err)
 	}
 
-	// 1. Write hook script
+	// 1. Write hook script (non-Windows only; on Windows we use "syt hook" directly)
 	hooksDir := filepath.Join(home, ".claude", "hooks")
 	if err := os.MkdirAll(hooksDir, 0755); err != nil {
 		return fmt.Errorf("creating hooks dir: %w", err)
 	}
 
-	hookPath := filepath.Join(hooksDir, "syt-rewrite.sh")
-	if err := os.WriteFile(hookPath, []byte(hookScript), 0644); err != nil {
-		return fmt.Errorf("writing hook script: %w", err)
-	}
-
-	// chmod 0755 on non-Windows
 	if runtime.GOOS != "windows" {
+		hookPath := filepath.Join(hooksDir, "syt-rewrite.sh")
+		if err := os.WriteFile(hookPath, []byte(hookScript), 0644); err != nil {
+			return fmt.Errorf("writing hook script: %w", err)
+		}
 		if err := os.Chmod(hookPath, 0755); err != nil {
 			return fmt.Errorf("setting hook permissions: %w", err)
 		}
-	}
 
-	// 2. Store integrity hash
-	dataDir := utils.DataDir()
-	if err := integrity.Store(dataDir, hookScript); err != nil {
-		return fmt.Errorf("storing integrity hash: %w", err)
-	}
+		// 2. Store integrity hash
+		dataDir := utils.DataDir()
+		if err := integrity.Store(dataDir, hookScript); err != nil {
+			return fmt.Errorf("storing integrity hash: %w", err)
+		}
 
-	// Also write hooks/syt-rewrite.sh in project
-	projectHookDir := "hooks"
-	_ = os.MkdirAll(projectHookDir, 0755)
-	_ = os.WriteFile(filepath.Join(projectHookDir, "syt-rewrite.sh"), []byte(hookScript), 0755)
+		// Also write hooks/syt-rewrite.sh in project
+		projectHookDir := "hooks"
+		_ = os.MkdirAll(projectHookDir, 0755)
+		_ = os.WriteFile(filepath.Join(projectHookDir, "syt-rewrite.sh"), []byte(hookScript), 0755)
+	}
 
 	// 3. Patch ~/.claude/settings.json
 	settingsPath := filepath.Join(home, ".claude", "settings.json")
-	if err := patchSettings(settingsPath, hookPath); err != nil {
+	if err := patchSettings(settingsPath, "syt hook"); err != nil {
 		return fmt.Errorf("patching settings: %w", err)
 	}
 
@@ -110,16 +108,19 @@ ultra_compact = false
 	}
 
 	// Print success
-	h := sha256.Sum256([]byte(hookScript))
-	fmt.Printf("✓ syt hook installed at %s\n", hookPath)
-	fmt.Printf("✓ Integrity hash: %x\n", h[:8])
+	fmt.Println("✓ hook registered: syt hook")
+	if runtime.GOOS != "windows" {
+		h := sha256.Sum256([]byte(hookScript))
+		fmt.Printf("✓ syt-rewrite.sh written to %s\n", filepath.Join(hooksDir, "syt-rewrite.sh"))
+		fmt.Printf("✓ Integrity hash: %x\n", h[:8])
+	}
 	fmt.Printf("✓ Config: %s\n", configPath)
 	fmt.Println("✓ Claude Code will now automatically optimize bash commands.")
 	return nil
 }
 
 // patchSettings adds the syt hook to ~/.claude/settings.json.
-func patchSettings(settingsPath, hookPath string) error {
+func patchSettings(settingsPath, hookCmd string) error {
 	// Read existing settings
 	var settings map[string]interface{}
 	if data, err := os.ReadFile(settingsPath); err == nil {
@@ -132,7 +133,7 @@ func patchSettings(settingsPath, hookPath string) error {
 	// Build hook entry
 	hookEntry := map[string]interface{}{
 		"type":    "command",
-		"command": hookPath,
+		"command": hookCmd,
 	}
 	hookMatcher := map[string]interface{}{
 		"matcher": "Bash",
@@ -156,7 +157,7 @@ func patchSettings(settingsPath, hookPath string) error {
 				if subHooks, ok := m["hooks"].([]interface{}); ok {
 					for _, sh := range subHooks {
 						if shm, ok := sh.(map[string]interface{}); ok {
-							if shm["command"] == hookPath {
+							if shm["command"] == hookCmd {
 								return nil // Already set correctly
 							}
 						}

@@ -78,7 +78,7 @@ func removeHookFromSettings(settingsPath, hookPath string) error {
 		var newSubHooks []interface{}
 		for _, sh := range subHooks {
 			shm, ok := sh.(map[string]interface{})
-			if !ok || shm["command"] != hookPath {
+			if !ok || (shm["command"] != hookPath && shm["command"] != "syt hook") {
 				newSubHooks = append(newSubHooks, sh)
 			}
 		}

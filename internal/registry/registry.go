@@ -446,25 +446,25 @@ func init() {
 		// ── Make ────────────────────────────────────────────────
 		{
 			Pattern:  regexp.MustCompile(`^make\s+test(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy make test" + extractArgs(cmd, "make test") },
+			Rewrite:  func(cmd string) string { return "syt make test" + extractArgs(cmd, "make test") },
 			Category: CategoryTest,
 			SavesPct: 80,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^make\s+build(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy make build" + extractArgs(cmd, "make build") },
+			Rewrite:  func(cmd string) string { return "syt make build" + extractArgs(cmd, "make build") },
 			Category: CategoryBuild,
 			SavesPct: 75,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^make\s+install(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy make install" + extractArgs(cmd, "make install") },
+			Rewrite:  func(cmd string) string { return "syt make install" + extractArgs(cmd, "make install") },
 			Category: CategoryBuild,
 			SavesPct: 75,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^make\s+lint(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy make lint" + extractArgs(cmd, "make lint") },
+			Rewrite:  func(cmd string) string { return "syt make lint" + extractArgs(cmd, "make lint") },
 			Category: CategoryLint,
 			SavesPct: 75,
 		},
@@ -472,19 +472,19 @@ func init() {
 		// ── Yarn ────────────────────────────────────────────────
 		{
 			Pattern:  regexp.MustCompile(`^yarn\s+install(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy yarn install" + extractArgs(cmd, "yarn install") },
+			Rewrite:  func(cmd string) string { return "syt yarn install" + extractArgs(cmd, "yarn install") },
 			Category: CategoryPackage,
 			SavesPct: 80,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^yarn\s+add(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy yarn add" + extractArgs(cmd, "yarn add") },
+			Rewrite:  func(cmd string) string { return "syt yarn add" + extractArgs(cmd, "yarn add") },
 			Category: CategoryPackage,
 			SavesPct: 80,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^yarn\s+test(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy yarn test" + extractArgs(cmd, "yarn test") },
+			Rewrite:  func(cmd string) string { return "syt yarn test" + extractArgs(cmd, "yarn test") },
 			Category: CategoryTest,
 			SavesPct: 85,
 		},
@@ -492,19 +492,19 @@ func init() {
 		// ── Bun ──────────────────────────────────────────────────
 		{
 			Pattern:  regexp.MustCompile(`^bun\s+install(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy bun install" + extractArgs(cmd, "bun install") },
+			Rewrite:  func(cmd string) string { return "syt bun install" + extractArgs(cmd, "bun install") },
 			Category: CategoryPackage,
 			SavesPct: 80,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^bun\s+test(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy bun test" + extractArgs(cmd, "bun test") },
+			Rewrite:  func(cmd string) string { return "syt bun test" + extractArgs(cmd, "bun test") },
 			Category: CategoryTest,
 			SavesPct: 90,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^bun\s+run(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy bun run" + extractArgs(cmd, "bun run") },
+			Rewrite:  func(cmd string) string { return "syt bun run" + extractArgs(cmd, "bun run") },
 			Category: CategoryBuild,
 			SavesPct: 70,
 		},
@@ -512,13 +512,13 @@ func init() {
 		// ── Poetry ──────────────────────────────────────────────
 		{
 			Pattern:  regexp.MustCompile(`^poetry\s+install(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy poetry install" + extractArgs(cmd, "poetry install") },
+			Rewrite:  func(cmd string) string { return "syt poetry install" + extractArgs(cmd, "poetry install") },
 			Category: CategoryPackage,
 			SavesPct: 80,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^poetry\s+add(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy poetry add" + extractArgs(cmd, "poetry add") },
+			Rewrite:  func(cmd string) string { return "syt poetry add" + extractArgs(cmd, "poetry add") },
 			Category: CategoryPackage,
 			SavesPct: 75,
 		},
@@ -526,7 +526,7 @@ func init() {
 		// ── Jest ────────────────────────────────────────────────
 		{
 			Pattern:  regexp.MustCompile(`^jest(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy jest" + extractArgs(cmd, "jest") },
+			Rewrite:  func(cmd string) string { return "syt jest" + extractArgs(cmd, "jest") },
 			Category: CategoryTest,
 			SavesPct: 90,
 		},
@@ -534,13 +534,13 @@ func init() {
 		// ── Nx ──────────────────────────────────────────────────
 		{
 			Pattern:  regexp.MustCompile(`^nx\s+test(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy nx test" + extractArgs(cmd, "nx test") },
+			Rewrite:  func(cmd string) string { return "syt nx test" + extractArgs(cmd, "nx test") },
 			Category: CategoryTest,
 			SavesPct: 80,
 		},
 		{
 			Pattern:  regexp.MustCompile(`^nx\s+build(\s|$)`),
-			Rewrite:  func(cmd string) string { return "syt proxy nx build" + extractArgs(cmd, "nx build") },
+			Rewrite:  func(cmd string) string { return "syt nx build" + extractArgs(cmd, "nx build") },
 			Category: CategoryBuild,
 			SavesPct: 80,
 		},

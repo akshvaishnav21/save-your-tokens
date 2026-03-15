@@ -28,39 +28,48 @@ Claude Code bash call: "cargo test 2>&1"
 
 Verify: `go version` should print `go1.22` or higher.
 
-**jq** (required by the hook script):
-
-- **macOS:** `brew install jq`
-- **Linux (Ubuntu/Debian):** `sudo apt install jq`
-- **Windows:** `winget install jqlang.jq` or `choco install jq`
-
-Verify: `jq --version`
-
 **Git** (to clone the repo):
 
 - **macOS:** `brew install git` or install Xcode Command Line Tools: `xcode-select --install`
 - **Linux:** `sudo apt install git`
 - **Windows:** Download from [git-scm.com](https://git-scm.com/) or `winget install Git.Git`
 
-**make** (to build):
+**make** (optional, to use `make` shortcuts):
 
 - **macOS:** included with Xcode Command Line Tools (`xcode-select --install`)
 - **Linux:** `sudo apt install make`
-- **Windows:** `winget install GnuWin32.Make` or use [Git Bash](https://git-scm.com/) which includes make
+- **Windows:** not required — use the Go commands directly (see below)
 
 ### Step 2: Build from source
 
 ```bash
 git clone https://github.com/akshvaishnav21/save-your-tokens
 cd save-your-tokens
-make build          # produces dist/syt (or dist/syt.exe on Windows)
+```
+
+**macOS / Linux:**
+```bash
+make build          # produces dist/syt
 make install        # copies binary to $GOPATH/bin
 ```
 
-Make sure `$GOPATH/bin` is on your `$PATH`. Add this to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.) if needed:
+**Windows (PowerShell):**
+```powershell
+mkdir dist
+$env:CGO_ENABLED=0; go build -ldflags="-s -w" -o dist/syt.exe .
+Copy-Item dist/syt.exe "$env:GOPATH\bin\syt.exe"
+```
 
+Make sure `$GOPATH/bin` is on your `PATH`.
+
+**macOS / Linux** — add to `~/.bashrc` or `~/.zshrc`:
 ```bash
 export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
+**Windows (PowerShell)** — run once to set permanently:
+```powershell
+[Environment]::SetEnvironmentVariable("PATH", $env:PATH + ";$(go env GOPATH)\bin", "User")
 ```
 
 ### Step 3: Install the Claude Code hook
@@ -69,7 +78,9 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 syt init
 ```
 
-This writes `~/.claude/hooks/syt-rewrite.sh` and patches `~/.claude/settings.json` to register the `PreToolUse` hook. Claude Code will now automatically route bash commands through `syt`.
+This patches `~/.claude/settings.json` to register `syt hook` as the `PreToolUse` hook. On macOS/Linux it also writes `~/.claude/hooks/syt-rewrite.sh` as a standalone script. Claude Code will now automatically route bash commands through `syt`.
+
+> **Windows note:** The hook runs as `syt hook` (pure Go, no bash or `jq` required). Make sure `syt` is on the PATH that VS Code sees, then restart VS Code after running `syt init`.
 
 ### Uninstall
 
@@ -109,19 +120,29 @@ syt discover
 | Command | Token reduction |
 |---------|----------------|
 | `cargo test` | ~80–90% |
-| `cargo build` | ~55–65% |
-| `go test -json` | ~70–80% |
+| `cargo build` / `cargo clippy` | ~55–75% |
+| `go test` | ~70–80% |
+| `go build` / `go vet` | ~60–80% |
 | `pytest` | ~40–60% |
 | `vitest` | ~95–99% |
-| `playwright` | ~70–90% |
+| `jest` | ~80–90% |
+| `playwright` / `npx playwright` | ~70–90% |
 | `tsc` | ~80–85% |
-| `eslint` / `biome` | ~75–85% |
-| `git log` / `git diff` | ~75–80% |
-| `npm install` / `pnpm` | ~60–75% |
-| `docker ps` / `docker build` | ~60–70% |
-| `gh pr list` / `gh pr view` | pass-through + trim |
+| `eslint` / `biome` / `ruff` | ~75–85% |
+| `mypy` / `prettier` | ~70–75% |
+| `git log` / `git diff` / `git status` | ~75–80% |
+| `npm install` / `pnpm install` | ~60–80% |
+| `yarn install` / `yarn add` | ~70–80% |
+| `bun install` / `bun test` | ~70–90% |
+| `poetry install` / `poetry add` | ~70–80% |
+| `pip install` / `uv pip install` | ~70–80% |
+| `docker ps` / `docker build` | ~60–80% |
+| `gh pr list` / `gh pr view` | ~60–70% |
 | `next build` | ~85–90% |
-| `prisma migrate` | ~80% |
+| `prisma migrate` / `prisma generate` | ~70–80% |
+| `nx test` / `nx build` | ~70–80% |
+| `make test` / `make build` | ~60–75% |
+| `grep` / `rg` / `ls` / `find` | ~60–70% |
 
 ## Configuration
 
@@ -158,12 +179,21 @@ When a command fails, `syt` saves the full raw output to `~/.local/share/syt/tee
 
 ## Development
 
+**macOS / Linux:**
 ```bash
 make build        # compile binary
 make test         # run unit tests
 make lint         # run golangci-lint
 make clean        # remove dist/
+```
 
+**Windows (PowerShell):**
+```powershell
+$env:CGO_ENABLED=0; go build -ldflags="-s -w" -o dist/syt.exe .
+go test ./...
+```
+
+```bash
 # Run a single test
 go test ./cmd/... -run TestFilterCargoTest
 go test ./internal/registry/... -v
