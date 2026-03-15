@@ -167,7 +167,7 @@ colors = true
 ultra_compact = false
 ```
 
-When a command fails, `syt` saves the full raw output to `~/.local/share/syt/tee/` so you can inspect what was compressed away.
+When a command fails, `syt` saves the full raw output to the platform data directory (`~/.local/share/syt/tee/` on Linux, `~/Library/Application Support/syt/tee/` on macOS, `%APPDATA%\syt\tee\` on Windows) so you can inspect what was compressed away.
 
 **Environment variable overrides:**
 
@@ -175,7 +175,7 @@ When a command fails, `syt` saves the full raw output to `~/.local/share/syt/tee
 |----------|-------------|
 | `SYT_DB_PATH` | Override SQLite database path |
 | `SYT_TEE` | Override tee mode (`always`/`failures`/`never`) |
-| `SYT_HOOK_AUDIT=1` | Log every hook rewrite to `~/.local/share/syt/hook-audit.log` |
+| `SYT_HOOK_AUDIT=1` | Log every hook rewrite to `$XDG_DATA_HOME/syt/hook-audit.log` (Linux: `~/.local/share/syt/`, macOS: `~/.local/share/syt/`, Windows: `%APPDATA%\syt\`) |
 
 ## Development
 

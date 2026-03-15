@@ -30,7 +30,7 @@ jq -n --arg cmd "$REWRITTEN" --arg desc "$DESC" \
   '{permissionDecision:"allow",updatedInput:{command:$cmd,description:$desc}}'
 if [[ "${SYT_HOOK_AUDIT:-0}" == "1" ]]; then
   echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) REWRITE: $CMD -> $REWRITTEN" \
-    >> "${HOME}/.local/share/syt/hook-audit.log"
+    >> "${XDG_DATA_HOME:-${HOME}/.local/share}/syt/hook-audit.log"
 fi
 `
 
